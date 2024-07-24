@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
             Vector2 currentPosition = transform.position;
             
             //Interact
-            InteractableComponent[] interactableComponents = FindObjectsOfType<InteractableComponent>(false);
+            InteractableComponent[] interactableComponents = FindObjectsByType<InteractableComponent>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
             
             if (interactableComponents.Length > 0)
             {
