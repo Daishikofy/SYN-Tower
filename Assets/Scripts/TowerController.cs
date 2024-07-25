@@ -10,7 +10,7 @@ namespace TOWER
         public string targetTag = "";
 
         [Header("Tower Stats")] [SerializeField]
-        private TOW_Stats stats;
+        private TowerStats stats;
 
         [SerializeField] private GameObject ui;
 

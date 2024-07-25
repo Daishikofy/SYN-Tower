@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace TOWER
 {
@@ -70,6 +71,10 @@ namespace TOWER
             {
                 spawnPointManager.InitializeCurrentWave(levelScenario.enemyWaves[_currentWaveId]);
             }
+            else
+            {
+                OnVictory();
+            }
         }
 
         // _ _ _ _ _ ENEMIES _ _ _ _ _ _
@@ -100,6 +105,27 @@ namespace TOWER
             }
 
             return false;
+        }
+        
+        // _ _ _ _ _ GAME FLOW _ _ _ _ _ _
+
+        public void OnGameOver()
+        {
+            Time.timeScale = 0;
+            uiManager.ShowGameOver();
+        }
+
+        public void OnVictory()
+        {
+            Time.timeScale = 0;
+            uiManager.ShowVictory();
+        }
+
+        public void Restart()
+        {
+            Time.timeScale = 1;
+            var activeScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(activeScene.name, LoadSceneMode.Single);
         }
     }
 }

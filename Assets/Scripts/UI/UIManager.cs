@@ -9,6 +9,7 @@ namespace TOWER
         public static TOW_UIManager Instance => _instance;
 
         [SerializeField] private DebugInfoPanel debugInfoPanel;
+        [SerializeField] private EndGamePanel endGamePanel;
 
         private void Awake()
         {
@@ -20,6 +21,21 @@ namespace TOWER
             {
                 _instance = this;
             }
+            
+            var request = Resources.LoadAsync("Build", typeof(BuildNumberData));
+            request.completed += OnLoad;
+        }
+        
+        private void OnLoad(AsyncOperation operation)
+        {
+            var request = (ResourceRequest) operation;
+            var buildNumberData = (BuildNumberData) request.asset; 
+            endGamePanel.buildNumberText.text = buildNumberData.BuildNumber;
+        }
+
+        private void Start()
+        {
+            endGamePanel.DisablePanel();
         }
 
         public void UpdateCurrency(int value)
@@ -32,9 +48,14 @@ namespace TOWER
             debugInfoPanel.UpdateTowerCount(value);
         }
 
-        public void UpdateLifePoint(int value)
+        public void ShowGameOver()
         {
-            debugInfoPanel.UpdateLifePoints(value);
+            endGamePanel.EnableGameOverPanel();
+        }
+
+        public void ShowVictory()
+        {
+            endGamePanel.EnableVictoryPanel();
         }
     }
 }

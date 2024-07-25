@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using TOWER.Components;
 using UnityEngine;
@@ -17,14 +16,14 @@ namespace TOWER
         public float attackRate = 2f;
         private float _attackTimer;
         public float velocity = 100f;
-        public Transform target;
+        private Transform _target;
 
         private List<Vector2> _path;
         private int _currentPathStep;
 
         public void Initialize(Transform targetedTransform, List<Vector2> path)
         {
-            target = targetedTransform;
+            _target = targetedTransform;
             _path = path;
         }
         private void Awake()
@@ -59,7 +58,7 @@ namespace TOWER
         private void Attack()
         {
             _attackTimer = 0f;
-            target.gameObject.GetComponent<HealthComponent>()?.Damage(damage);
+            _target.gameObject.GetComponent<HealthComponent>()?.Damage(damage);
         }
 
         private void Death()

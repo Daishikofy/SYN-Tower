@@ -7,7 +7,7 @@ using Vector3 = UnityEngine.Vector3;
 namespace TOWER
 {
     [Serializable]
-    public class TOW_Stats
+    public class TowerStats
     {
         public int level;
         public int damage;
@@ -27,9 +27,12 @@ namespace TOWER
         public void LevelUp()
         {
             level++;
-            damage++;
-            shootCooldown -= 0.5f;
-            range += 0.10f;
+            if (level % 4 == 0)
+            {
+                damage++;
+            }
+            shootCooldown -= shootCooldown/4f;
+            range += 0.50f;
             
             UpdateUI();
         }
@@ -38,7 +41,7 @@ namespace TOWER
         {
             levelText.text = level.ToString();
             damageText.text = damage.ToString();
-            rateText.text = shootCooldown.ToString(CultureInfo.InvariantCulture);
+            rateText.text = shootCooldown.ToString("0.00");
             rangeCircle.transform.localScale = Vector3.one * range;
         }
     }

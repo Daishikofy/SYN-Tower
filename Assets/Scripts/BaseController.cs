@@ -1,5 +1,6 @@
 ﻿using TOWER.Components;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace TOWER
 {
@@ -8,15 +9,23 @@ namespace TOWER
     {
         [SerializeField]
         public HealthComponent healthComponent;
-        
+
+        [SerializeField] private Slider healthBar;
         private void Awake()
         {
             healthComponent.onDefeated.AddListener(OnDefeated);
+            healthBar.maxValue = healthComponent.maxHealth;
+            healthBar.value = healthComponent.CurrentHealth;
         }
 
         private void OnDefeated()
         {
-            Debug.Log("GAME OVER");
+            GameManager.Instance.OnGameOver();
+        }
+
+        public void UpdateHealthBar(int value)
+        {
+            healthBar.value = value;
         }
     }
 }

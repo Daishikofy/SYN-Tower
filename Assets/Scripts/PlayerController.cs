@@ -15,13 +15,11 @@ public class PlayerController : MonoBehaviour
 
     [Header("Interaction Variables")] [SerializeField]
     private float maxInteractionDistance = 2;
-    
-    [Header("Attack Variables")] 
+
+    [Header("Attack Variables")] public TowerController towerPrefab;
     public List<TowerController> towers;
     private List<int> _availableTowers;
     private List<int> _placedTowers;
-    public float rangeToGrabTower = 0.25f;
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -86,7 +84,7 @@ public class PlayerController : MonoBehaviour
                 int towerIndex = _placedTowers[i];
                 TowerController tower = towers[_placedTowers[i]];
                 
-                if (Vector2.Distance(tower.transform.position, currentPosition) <= rangeToGrabTower)
+                if (Vector2.Distance(tower.transform.position, currentPosition) <= maxInteractionDistance)
                 {
                     tower.DisableTower();
                     _availableTowers.Add(towerIndex);
@@ -112,7 +110,7 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManager.Instance.CanBuyTower())
         {
-            TowerController newTower = Instantiate(towers[0]);
+            TowerController newTower = Instantiate(towerPrefab);
             newTower.DisableTower();
             towers.Add(newTower);
             _availableTowers.Add(towers.Count - 1);
