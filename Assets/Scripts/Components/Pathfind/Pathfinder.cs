@@ -15,7 +15,7 @@ namespace TOWER
             _grid = new DynamicGrid(obstacles);
         }
 
-        public List<Vector2> ShortestPath(Vector2 initialPosition, Vector2 targetPosition)
+        public List<Vector2> ShortestPath(Vector2 initialPosition, Vector2 targetPosition, Vector2 offset)
         {
             List<Node> openNodes = new List<Node>();
             List<Node> closedNodes = new List<Node>();
@@ -46,7 +46,7 @@ namespace TOWER
                     while (currentNode.position != startPosition)
                     {
                         currentNode = currentNode.parent;
-                        path.Add(currentNode.position);
+                        path.Add(currentNode.position + offset);
                     }
 
                     path.Reverse();
@@ -110,35 +110,84 @@ namespace TOWER
 
         private List<Node> GetNeighbours(Node node, Vector2Int targetPosition, DynamicGrid grid)
         {
-            Vector2Int[] adjacentPositions =
+            Vector2Int[] verticalPositions = new Vector2Int[2];
+            Vector2Int[] horizontalPositions = new Vector2Int[2];
+            Vector2Int[] adjacentPositions = new Vector2Int[8];
+            int[] adjacentValues = new int[8];
+            int adjacentIndex = 0;
+            Vector2Int definedPosition = node.position + Vector2Int.down;
+            int definedCellValue = grid.GetCellValue(definedPosition);
+            if (definedCellValue < Int32.MaxValue)
             {
-                node.position + Vector2Int.up,
-                node.position + Vector2Int.right,
-                node.position + Vector2Int.down,
-                node.position + Vector2Int.left,
-                node.position + Vector2Int.up + Vector2Int.right,
-                node.position + Vector2Int.up + Vector2Int.left,
-                node.position + Vector2Int.down + Vector2Int.right,
-                node.position + Vector2Int.down + Vector2Int.left,
-            };
+                adjacentPositions[adjacentIndex] = definedPosition;
+                adjacentValues[adjacentIndex] = definedCellValue;
+                adjacentIndex++;
+                
+                verticalPositions[0] = Vector2Int.down;
+            }
+            
+            definedPosition = node.position + Vector2Int.up;
+            definedCellValue = grid.GetCellValue(definedPosition);
+            if (definedCellValue < Int32.MaxValue)
+            {
+                adjacentPositions[adjacentIndex] = definedPosition;
+                adjacentValues[adjacentIndex] = definedCellValue;
+                adjacentIndex++;
+                
+                verticalPositions[1] = Vector2Int.up;
+            }
+            
+            definedPosition = node.position + Vector2Int.left;
+            definedCellValue = grid.GetCellValue(definedPosition);
+            if (definedCellValue < Int32.MaxValue)
+            {
+                adjacentPositions[adjacentIndex] = definedPosition;
+                adjacentValues[adjacentIndex] = definedCellValue;
+                adjacentIndex++;
+                
+                horizontalPositions[0] = Vector2Int.left;
+            }           
+            
+            definedPosition = node.position + Vector2Int.right;
+            definedCellValue = grid.GetCellValue(definedPosition);
+            if (definedCellValue < Int32.MaxValue)
+            {
+                adjacentPositions[adjacentIndex] = definedPosition;
+                adjacentValues[adjacentIndex] = definedCellValue;
+                adjacentIndex++;
+                
+                horizontalPositions[1] = Vector2Int.right;
+            }
+            
+            foreach (Vector2Int verticalPosition in verticalPositions)
+            {
+                foreach (Vector2Int horizontalPosition in horizontalPositions)
+                {
+                    definedPosition = node.position + horizontalPosition + verticalPosition;
+                    definedCellValue = grid.GetCellValue(definedPosition);
+                    if (definedCellValue < Int32.MaxValue)
+                    {
+                        adjacentPositions[adjacentIndex] = definedPosition;
+                        adjacentIndex++;
+                    }
+                }
+            }
 
             List<Node> neighbours = new List<Node>(8);
 
-            foreach (Vector2Int position in adjacentPositions)
+            for (int i = 0; i < adjacentIndex; i++)
             {
-                int cellValue = grid.GetCellValue(position);
-                if (cellValue < Int32.MaxValue)
-                {
-                    Vector2Int distance = new Vector2Int(Mathf.Abs(position.x - targetPosition.x), Mathf.Abs(position.y - targetPosition.y));
+                Vector2Int position = adjacentPositions[i];
+            
+                Vector2Int distance = new Vector2Int(Mathf.Abs(position.x - targetPosition.x), Mathf.Abs(position.y - targetPosition.y));
 
-                    int lowest = Mathf.Min(distance.x, distance.y);
-                    int highest = Mathf.Max(distance.x, distance.y);
+                int lowest = Mathf.Min(distance.x, distance.y);
+                int highest = Mathf.Max(distance.x, distance.y);
 
-                    int horizontalMovesRequired = highest - lowest;
+                int horizontalMovesRequired = highest - lowest;
 
-                    int costToTarget = lowest * 14 + horizontalMovesRequired * 10 ;
-                    neighbours.Add(new Node(node, position, costToTarget, cellValue));
-                }
+                int costToTarget = lowest * 14 + horizontalMovesRequired * 10 ;
+                neighbours.Add(new Node(node, position, costToTarget, adjacentValues[i]));
             }
 
             return neighbours;
