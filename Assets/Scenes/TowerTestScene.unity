@@ -11042,6 +11042,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 273437972806889784, guid: dee52e18de8532f498c56b198cbe87db, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1729135659208637302, guid: dee52e18de8532f498c56b198cbe87db, type: 3}
       propertyPath: m_Simulated
       value: 1
@@ -11102,6 +11106,10 @@ PrefabInstance:
       propertyPath: 'towers.Array.data[2]'
       value: 
       objectReference: {fileID: 417182344}
+    - target: {fileID: 5478757182588773893, guid: dee52e18de8532f498c56b198cbe87db, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8569593595628345236, guid: dee52e18de8532f498c56b198cbe87db, type: 3}
       propertyPath: m_Name
       value: Player
