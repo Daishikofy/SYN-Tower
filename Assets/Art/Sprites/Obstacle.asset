@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Obstacle
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 7482667652216324306, guid: 647593ac10c5be040bed0647179f5eb0, type: 3}
-  m_Color: {r: 0.37647063, g: 0.30588236, b: 0.47058827, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_Transform:
     e00: 1
     e01: 0
