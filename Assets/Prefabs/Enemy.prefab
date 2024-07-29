@@ -183,7 +183,7 @@ MonoBehaviour:
   currencyDrop: 1
   damage: 1
   attackRate: 2
-  velocity: 35
+  velocity: 50
 --- !u!58 &3643701194593303261
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Attack",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "3a09f7aa-5874-4b23-82ea-508fa2839321",
                     "expectedControlType": "Button",
@@ -24,12 +24,12 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Interact",
+                    "name": "Attack",
                     "type": "Button",
                     "id": "bd52a80c-9a01-4817-a333-78992eeb0709",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Tap",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 }
             ],
@@ -162,7 +162,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -173,7 +173,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -184,18 +184,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "af9bd221-c5b9-4306-99fc-405d39a9e4b8",
-                    "path": "<Keyboard>/e",
-                    "interactions": "Tap",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
