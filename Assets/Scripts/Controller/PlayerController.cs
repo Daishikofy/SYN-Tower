@@ -59,27 +59,28 @@ namespace TOWER
 
         public void Attack(InputAction.CallbackContext context)
         {
-            if (context.phase == InputActionPhase.Performed)
+            if (context.phase == InputActionPhase.Started)
             {
-                shieldPower.Prepare(quaternion.LookRotation(Vector3.forward, (Vector3) _movementDirection));
+                if (shieldPower.IsActivated)
+                {
+                    shieldPower.Break();
+                }
+                else
+                {
+                    shieldPower.Prepare(quaternion.LookRotation(Vector3.forward, (Vector3) _movementDirection));
+                }
             }
-
-            if (context.phase == InputActionPhase.Canceled)
+            else if (context.phase == InputActionPhase.Canceled)
             {
                 shieldPower.Place();
             }
         }
+        
 
         public void Interact(InputAction.CallbackContext context) //Input system
         {
             if (context.phase == InputActionPhase.Performed)
             {
-                if (shieldPower.IsActivated)
-                {
-                    shieldPower.Break();
-                    return;
-                }
-                
                 Vector2 currentPosition = transform.position;
 
                 //Interact

@@ -3995,78 +3995,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!1001 &417182343
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3663187338215569673, guid: 1f06e506fa0f9a54b9c01c247e42e352, type: 3}
-      propertyPath: m_Name
-      value: Tower (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3663187338215569673, guid: 1f06e506fa0f9a54b9c01c247e42e352, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588880235674111630, guid: 1f06e506fa0f9a54b9c01c247e42e352, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588880235674111630, guid: 1f06e506fa0f9a54b9c01c247e42e352, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588880235674111630, guid: 1f06e506fa0f9a54b9c01c247e42e352, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588880235674111630, guid: 1f06e506fa0f9a54b9c01c247e42e352, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588880235674111630, guid: 1f06e506fa0f9a54b9c01c247e42e352, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588880235674111630, guid: 1f06e506fa0f9a54b9c01c247e42e352, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588880235674111630, guid: 1f06e506fa0f9a54b9c01c247e42e352, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588880235674111630, guid: 1f06e506fa0f9a54b9c01c247e42e352, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588880235674111630, guid: 1f06e506fa0f9a54b9c01c247e42e352, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588880235674111630, guid: 1f06e506fa0f9a54b9c01c247e42e352, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1f06e506fa0f9a54b9c01c247e42e352, type: 3}
---- !u!114 &417182344 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 677733783873154845, guid: 1f06e506fa0f9a54b9c01c247e42e352, type: 3}
-  m_PrefabInstance: {fileID: 417182343}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3926f3d12a16d2940a65bd44bbf970d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &419214101
 GameObject:
   m_ObjectHideFlags: 0
@@ -11103,6 +11031,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4789816174500247746, guid: dee52e18de8532f498c56b198cbe87db, type: 3}
+      propertyPath: towers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789816174500247746, guid: dee52e18de8532f498c56b198cbe87db, type: 3}
       propertyPath: 'towers.Array.data[0]'
       value: 
       objectReference: {fileID: 5998099738777614538}
@@ -11113,7 +11045,7 @@ PrefabInstance:
     - target: {fileID: 4789816174500247746, guid: dee52e18de8532f498c56b198cbe87db, type: 3}
       propertyPath: 'towers.Array.data[2]'
       value: 
-      objectReference: {fileID: 417182344}
+      objectReference: {fileID: 0}
     - target: {fileID: 8569593595628345236, guid: dee52e18de8532f498c56b198cbe87db, type: 3}
       propertyPath: m_Name
       value: Player
@@ -11368,7 +11300,6 @@ SceneRoots:
   - {fileID: 1027421333}
   - {fileID: 5998099738777614537}
   - {fileID: 1967160232}
-  - {fileID: 417182343}
   - {fileID: 136325422230081001}
   - {fileID: 170016601277150595}
   - {fileID: 419214102}

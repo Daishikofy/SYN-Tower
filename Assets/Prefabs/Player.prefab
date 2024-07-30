@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 4372194507836712440}
+  spriteRenderer: {fileID: 7119698761307407940}
+  preview: {fileID: -1266646154, guid: 65fd967d6be1da14b80407cbf830fb87, type: 3}
+  placed: {fileID: 1146050222, guid: 65fd967d6be1da14b80407cbf830fb87, type: 3}
 --- !u!1 &3520827362427354437
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,7 +42,7 @@ namespace TOWER
             levelText.text = level.ToString();
             damageText.text = damage.ToString();
             rateText.text = shootCooldown.ToString("0.00");
-            rangeCircle.transform.localScale = Vector3.one * range;
+            rangeCircle.transform.localScale = 2 * range * Vector3.one ;
         }
     }
 }
