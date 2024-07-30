@@ -303,9 +303,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '1.34
-
-'
+  m_text: 1.40
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: abb0573c7ae6b824abfdcd4bea39b50c, type: 2}
   m_sharedMaterial: {fileID: 6344527689503935049, guid: abb0573c7ae6b824abfdcd4bea39b50c, type: 2}
@@ -339,7 +337,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -368,7 +366,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.03214264, y: 0, z: 0.106972694, w: 0.49820936}
+  m_margin: {x: 0.107254505, y: 0, z: -0.46133924, w: 0.49820936}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1139,7 +1137,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1266646154, guid: 65fd967d6be1da14b80407cbf830fb87, type: 3}
+  m_Sprite: {fileID: 1614741245, guid: 65fd967d6be1da14b80407cbf830fb87, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
