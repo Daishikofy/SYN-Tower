@@ -7,6 +7,7 @@ namespace TOWER
     [RequireComponent(typeof(Rigidbody2D),typeof(HealthComponent))]
     public class EnemyController : MonoBehaviour
     {
+        public Animator animator;
         public Rigidbody2D physicComponent;
         public HealthComponent healthComponent;
 
@@ -29,6 +30,7 @@ namespace TOWER
         private void Awake()
         {
             healthComponent.onDefeated.AddListener(Death);
+            healthComponent.onHealthChanged.AddListener(OnDamaged);
         }
 
         private void FixedUpdate()
@@ -59,6 +61,11 @@ namespace TOWER
         {
             _attackTimer = 0f;
             _target.gameObject.GetComponent<HealthComponent>()?.Damage(damage);
+        }
+
+        private void OnDamaged(int value)
+        {
+            animator.SetTrigger("IsAttacked");
         }
 
         private void Death()
