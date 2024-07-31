@@ -31,6 +31,7 @@ namespace TOWER
         {
             healthComponent.onDefeated.AddListener(Death);
             healthComponent.onHealthChanged.AddListener(OnDamaged);
+            _attackTimer = attackRate;
         }
 
         private void FixedUpdate()
