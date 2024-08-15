@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
-using UnityEditor.Searcher;
 using UnityEngine;
 
 public class ShieldPowerController : MonoBehaviour
@@ -35,7 +34,7 @@ public class ShieldPowerController : MonoBehaviour
         collider.enabled = true;
         spriteRenderer.sprite = placed;
         Debug.Log("Placed shield at rotation : " + transform.rotation.normalized.eulerAngles);
-        
+
     }
 
     public void Break()
