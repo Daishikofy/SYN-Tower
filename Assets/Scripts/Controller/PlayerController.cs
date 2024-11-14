@@ -12,9 +12,14 @@ namespace TOWER
         public float velocity = 10f;
 
         private Vector2 _movementDirection = Vector2.zero;
+        private Vector2 _characterDirection = Vector2.down;
 
         [Header("Interaction Variables")] [SerializeField]
         private float maxInteractionDistance = 2;
+        
+        [Header("Building Variables")]
+        [SerializeField]
+        private BuildingStructuresComponent buildingStructuresComponent;
 
         [Header("Tower Variables")] public TowerController towerPrefab;
         public List<TowerController> towers;
@@ -43,7 +48,7 @@ namespace TOWER
         {
             if (shieldPower.IsActivated)
             {
-                shieldPower.UpdateRotation(_movementDirection);
+                shieldPower.UpdateRotation(_characterDirection);
             }
             else
             {
@@ -55,6 +60,10 @@ namespace TOWER
         {
             Vector2 input = context.ReadValue<Vector2>();
             _movementDirection = input;
+            if (_movementDirection != Vector2.zero)
+            { 
+                _characterDirection = _movementDirection.normalized;
+            }
         }
 
         public void Attack(InputAction.CallbackContext context)
@@ -67,7 +76,7 @@ namespace TOWER
                 }
                 else
                 {
-                    shieldPower.Prepare(quaternion.LookRotation(Vector3.forward, (Vector3) _movementDirection));
+                    shieldPower.Prepare(quaternion.LookRotation(Vector3.forward, (Vector3) _characterDirection));
                 }
             }
             else if (context.phase == InputActionPhase.Canceled)
@@ -139,6 +148,11 @@ namespace TOWER
             }
         }
 
+        public void Build(InputAction.CallbackContext context)
+        {
+            buildingStructuresComponent.Build(transform.position, _characterDirection);
+        }
+        
         public void BuyTower() //Input system + Interactable
         {
             if (GameManager.Instance.CanBuyTower())

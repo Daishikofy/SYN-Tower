@@ -18,9 +18,15 @@ namespace TOWER
         {
             foreach (Tilemap tilemap in _obstacles)
             {
-                if (tilemap.GetTile((Vector3Int) position) != null)
+                WeightedTile tile = tilemap.GetTile<WeightedTile>((Vector3Int)position);
+                if (tile != null)
                 {
-                    return Int32.MaxValue;
+                    int weight = tile.GetWeight();
+                    if (weight < 0)
+                    {
+                        return Int32.MaxValue;
+                    }
+                    return weight;
                 }
             }
             return 0;

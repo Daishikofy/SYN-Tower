@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
-  m_Name: WhiteBoxing
+  m_Script: {fileID: 11500000, guid: 9d6e03f48b9f74e869bf9ab2363024c4, type: 3}
+  m_Name: Weighted_WhiteBoxing
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 527312023, guid: 17d208aa43954d141ac0a33b78953a6b, type: 3}
+  m_DefaultSprite: {fileID: -772702593, guid: cb403c17b17be8b4dbd42ec51cf1b350, type: 3}
   m_DefaultGameObject: {fileID: 0}
-  m_DefaultColliderType: 1
+  m_DefaultColliderType: 2
   m_TilingRules:
   - m_Id: 1
     m_Sprites:
@@ -265,3 +265,4 @@ MonoBehaviour:
     - {x: 1, y: -1, z: 0}
     - {x: 1, y: 0, z: 0}
     m_RuleTransform: 1
+  weight: -1
