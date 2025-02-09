@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TOWER;
+using TOWER.Components;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -19,17 +20,28 @@ namespace TOWER
 
         private void Awake()
         {
-            _mapManager = GameManager.Instance.mapManager;
+            _mapManager = GameManager.Instance.MapManager;
         }
 
         public void Build(Vector3 position, Vector2 direction)
         {
             Vector3 tilePosition = position + (Vector3)(direction * tilemap.layoutGrid.cellSize.x);
             Vector3Int tilemapPosition = tilemap.WorldToCell(tilePosition);
-
             if (tilemap.HasTile(tilemapPosition))
             {
-                _mapManager.RemoveTile(tilemap.name, tilemapPosition);
+                var hits = Physics2D.RaycastAll((Vector2)position, direction, 200f);
+                foreach (var hit in hits)
+                {
+                    if (hit.collider?.gameObject.name != "Player")
+                    {
+                        var hc = hit.collider?.gameObject.GetComponent<HealthComponent>();
+                        if (hc)
+                        {
+                            hc.Damage(1);
+                            break;
+                        }
+                    }
+                }
             }
             else
             {

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace TOWER
 {
@@ -18,7 +19,9 @@ namespace TOWER
         [SerializeField] private TOW_UIManager uiManager;
 
         public Pathfinder pathfinderManager;
-        public MapController mapManager;
+        [SerializeField]
+        private MapController mapManager;
+        public MapController MapManager => mapManager;
         
         [Header("Towers")] 
         [SerializeField]  private TowerController towerPrefab;
@@ -51,13 +54,16 @@ namespace TOWER
                 _instance = this;
             }
             
-            pathfinderManager.Initialize(mapManager);
+            pathfinderManager.Initialize(MapManager);
         }
 
         private void Start()
         {
             uiManager.UpdateCurrency(_currencyAmount);
-            StartPlayingLevel();
+            if (levelScenario != null)
+            {
+                StartPlayingLevel();
+            }
         }
 
         // _ _ _ _ _ LEVEL SCENARIO _ _ _ _ _ _

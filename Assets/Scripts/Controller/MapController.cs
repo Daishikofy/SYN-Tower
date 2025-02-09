@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TOWER.Components;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -29,7 +30,7 @@ namespace TOWER
             {
                 if (tilemapName == tilemap.name)
                 {
-                    tilemap.DeleteCells(position,1,1,1);
+                    tilemap.SetTile(position, null);
                     GameManager.Instance.UpdatedTilemap();
                     break;
                 }
@@ -40,17 +41,19 @@ namespace TOWER
         {
             foreach (Tilemap tilemap in obstacles)
             {
-                WeightedTile tile = tilemap.GetTile<WeightedTile>((Vector3Int)position);
+                GameObject tile = tilemap.GetInstantiatedObject((Vector3Int)position);
                 if (tile != null)
                 {
-                    int weight = tile.GetWeight();
-                    if (weight > 50)
-                    {
-                        Debug.Log("Building");
-                    }
+                    //PERF: Frequently called during pathfinding, might be an issue in the futur
+                    return tile.GetComponent<HealthComponent>().CurrentHealth;
+                }
+                WeightedTile wTile = tilemap.GetTile<WeightedTile>((Vector3Int)position);
+                if (wTile != null)
+                {
+                    int weight = wTile.GetWeight();
                     if (weight < 0)
                     {
-                        return Int32.MaxValue;
+                         return Int32.MaxValue;
                     }
                     return weight;
                 }

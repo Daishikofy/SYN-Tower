@@ -8981,7 +8981,7 @@ MonoBehaviour:
   mapManager: {fileID: 1027421334}
   towerPrefab: {fileID: 677733783873154845, guid: 1f06e506fa0f9a54b9c01c247e42e352, type: 3}
   towerPrice: 10
-  levelScenario: {fileID: 11400000, guid: dec92424005c9e74abf934ab24a82f23, type: 2}
+  levelScenario: {fileID: 0}
 --- !u!114 &903502244
 MonoBehaviour:
   m_ObjectHideFlags: 0

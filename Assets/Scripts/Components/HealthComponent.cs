@@ -13,8 +13,11 @@ namespace TOWER.Components
             get => _currentHealth;
             private set
             {
-                _currentHealth = value;
-                onHealthChanged.Invoke(_currentHealth);
+                if (_currentHealth != value)
+                {
+                    _currentHealth = value;
+                    onHealthChanged.Invoke(_currentHealth);
+                }
             }
         }
         private int _currentHealth;
@@ -25,7 +28,7 @@ namespace TOWER.Components
         
        private void Awake()
        {
-           CurrentHealth = maxHealth;
+           _currentHealth = maxHealth;
        }
 
        public void Damage(int damages)
