@@ -8958,8 +8958,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66026aa88100a84aa1d42f277e27ec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacles:
-  - {fileID: 362292975}
 --- !u!114 &903502243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8980,6 +8978,7 @@ MonoBehaviour:
     - {fileID: 1558670411}
   uiManager: {fileID: 1193174675}
   pathfinderManager: {fileID: 903502242}
+  mapManager: {fileID: 1027421334}
   towerPrefab: {fileID: 677733783873154845, guid: 1f06e506fa0f9a54b9c01c247e42e352, type: 3}
   towerPrice: 10
   levelScenario: {fileID: 11400000, guid: dec92424005c9e74abf934ab24a82f23, type: 2}
@@ -9102,6 +9101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1027421333}
   - component: {fileID: 1027421332}
+  - component: {fileID: 1027421334}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -9138,6 +9138,20 @@ Transform:
   - {fileID: 362292973}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1027421334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027421331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32a9b1c1030b2854c950101c101ec68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacles:
+  - {fileID: 362292975}
 --- !u!1 &1167105804
 GameObject:
   m_ObjectHideFlags: 0

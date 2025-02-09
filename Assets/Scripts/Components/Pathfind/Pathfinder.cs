@@ -7,12 +7,12 @@ namespace TOWER
 {
     public class Pathfinder : MonoBehaviour
     {
-        public List<Tilemap> obstacles;
-        private DynamicGrid _grid;
+        public readonly Vector2 PATHOFFSET = new Vector2(0.5f, 0.5f);
+        private IDynamicGrid _grid;
 
-        private void Awake()
+        public void Initialize(IDynamicGrid dynamicGrid)
         {
-            _grid = new DynamicGrid(obstacles);
+            _grid = dynamicGrid;
         }
 
         public List<Vector2> ShortestPath(Vector2 initialPosition, Vector2 targetPosition, Vector2 offset)
@@ -108,7 +108,7 @@ namespace TOWER
             return -1;
         }
 
-        private List<Node> GetNeighbours(Node node, Vector2Int targetPosition, DynamicGrid grid)
+        private List<Node> GetNeighbours(Node node, Vector2Int targetPosition, IDynamicGrid grid)
         {
             Vector2Int[] verticalPositions = new Vector2Int[2];
             Vector2Int[] horizontalPositions = new Vector2Int[2];

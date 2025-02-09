@@ -150,9 +150,12 @@ namespace TOWER
 
         public void Build(InputAction.CallbackContext context)
         {
-            buildingStructuresComponent.Build(transform.position, _characterDirection);
+            if (context.phase == InputActionPhase.Performed)
+            {
+                buildingStructuresComponent.Build(transform.position, _characterDirection);
+            }
         }
-        
+
         public void BuyTower() //Input system + Interactable
         {
             if (GameManager.Instance.CanBuyTower())

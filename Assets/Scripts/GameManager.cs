@@ -18,6 +18,7 @@ namespace TOWER
         [SerializeField] private TOW_UIManager uiManager;
 
         public Pathfinder pathfinderManager;
+        public MapController mapManager;
         
         [Header("Towers")] 
         [SerializeField]  private TowerController towerPrefab;
@@ -49,6 +50,8 @@ namespace TOWER
             {
                 _instance = this;
             }
+            
+            pathfinderManager.Initialize(mapManager);
         }
 
         private void Start()
@@ -126,6 +129,12 @@ namespace TOWER
             Time.timeScale = 1;
             var activeScene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(activeScene.name, LoadSceneMode.Single);
+        }
+        
+        // _ _ _ _ _ OTHER _ _ _ _ _ _
+        public void UpdatedTilemap()
+        {
+            spawnPointManager.UpdatePathFinding();
         }
     }
 }

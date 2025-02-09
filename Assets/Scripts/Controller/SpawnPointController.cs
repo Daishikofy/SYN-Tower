@@ -15,7 +15,6 @@ namespace TOWER
         private int _currentSequence;
 
         private List<Vector2> _pathToTarget;
-        private readonly Vector2 PATHOFFSET = new Vector2(0.5f, 0.5f);
 
         public void SetupWave(SpawnSequence[] spawnSequences)
         {
@@ -27,9 +26,15 @@ namespace TOWER
 
         private void Start()
         {
-            _pathToTarget = GameManager.Instance.pathfinderManager.ShortestPath(transform.position,
+            UpdatePathFinding();
+        }
+        
+        public void UpdatePathFinding()
+        {
+            Pathfinder pathfinder = GameManager.Instance.pathfinderManager;
+            _pathToTarget = pathfinder.ShortestPath(transform.position,
                 target.transform.position,
-                            PATHOFFSET);
+                pathfinder.PATHOFFSET);
         }
 
         private void Update()

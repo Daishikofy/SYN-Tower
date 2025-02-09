@@ -18,6 +18,7 @@ namespace TOWER
         private float _attackTimer;
         public float velocity = 100f;
         private Transform _target;
+        private HealthComponent _targetedHealthComponent;
 
         private List<Vector2> _path;
         private int _currentPathStep;
@@ -25,6 +26,7 @@ namespace TOWER
         public void Initialize(Transform targetedTransform, List<Vector2> path)
         {
             _target = targetedTransform;
+            _targetedHealthComponent = _target.gameObject.GetComponent<HealthComponent>();
             _path = path;
         }
         private void Awake()
@@ -61,7 +63,7 @@ namespace TOWER
         private void Attack()
         {
             _attackTimer = 0f;
-            _target.gameObject.GetComponent<HealthComponent>()?.Damage(damage);
+            _targetedHealthComponent?.Damage(damage);
         }
 
         private void OnDamaged(int value)
@@ -73,6 +75,27 @@ namespace TOWER
         {
             GameManager.Instance.OnEnemyDefeated(this);
             Destroy(gameObject);
+        }
+        
+        public void UpdatePathFinding()
+        {
+            _currentPathStep = 1;
+            Pathfinder pathfinder = GameManager.Instance.pathfinderManager;
+            _path = pathfinder.ShortestPath(transform.position,
+                _target.position,
+                pathfinder.PATHOFFSET);
+        }
+        
+        private void OnDrawGizmos()
+        {
+            if (_path == null)
+                return;
+            for (int i = 1; i < _path.Count; i++)
+            {
+                Gizmos.color = Color.blue;
+                Gizmos.DrawLine(_path[i-1], _path[i]);
+                Gizmos.DrawSphere(_path[i], 0.1f);
+            }
         }
     }
 }

@@ -78,5 +78,17 @@ namespace TOWER
                 GameManager.Instance.OnWaveEnded();
             }
         }
+        
+        public void UpdatePathFinding()
+        {
+            foreach (SpawnPointController spawnPoint in spawnPoints)
+            {
+                spawnPoint.UpdatePathFinding();
+            }
+            foreach (EnemyController enemy in _enemies)
+            {
+                enemy.UpdatePathFinding();
+            }
+        }
     }
 }
